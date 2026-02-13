@@ -10,7 +10,9 @@ public class FilterAlgorithm<T> implements BaseAlgorithm<List<T>, List<T>> {
     @Override
     public void configure(Map<String, Object> parameters) {
         if (parameters.containsKey("predicate")) {
-            predicate = (Predicate<T>) parameters.get("predicate");
+            @SuppressWarnings("unchecked")
+            Predicate<T> temp = (Predicate<T>) parameters.get("predicate");
+            predicate = temp;
         }
     }
     
